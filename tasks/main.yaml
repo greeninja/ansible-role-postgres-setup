@@ -1,0 +1,10 @@
+---
+
+- name: Install task
+  include_tasks: install.yaml
+
+- name: Setup
+  include_tasks: setup.yaml
+
+- name: Setup Users & DB
+  include_tasks: db_and_users.yaml

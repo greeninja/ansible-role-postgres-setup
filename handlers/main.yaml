@@ -1,0 +1,7 @@
+---
+
+- name: Restart Postgres
+  listen: restart postgres
+  service:
+    name: postgresql-12
+    state: restarted

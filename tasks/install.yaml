@@ -1,0 +1,25 @@
+---
+
+- name: Add Postgres Repos
+  dnf:
+    name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+    state: installed
+    disable_gpg_check: true
+
+- name: Disable default Postgres
+  command: dnf -qy module disable postgresql
+
+- name: Install Postgres
+  package:
+    name: "{{ item }}"
+    state: installed
+  loop:
+    - postgresql12
+    - postgresql12-server
+    - python3-psycopg2
+
+- name: Start & enable postgres
+  service:
+    name: postgresql-12
+    state: started
+    enabled: true

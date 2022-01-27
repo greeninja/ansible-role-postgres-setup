@@ -1,0 +1,9 @@
+---
+
+pg_databases:
+  - awx
+
+pg_users:
+  - name: awx
+    password: password
+    db: awx

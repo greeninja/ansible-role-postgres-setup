@@ -1,0 +1,18 @@
+---
+
+- name: Create databases
+  become: yes
+  become_user: postgres
+  community.postgresql.postgresql_db:
+    name: "{{ item }}"
+  loop: "{{ pg_databases }}"
+
+- name: Create Users
+  become: yes
+  become_user: postgres
+  community.postgresql.postgresql_user:
+    name: "{{ item.name }}"
+    db: "{{ item.db }}"
+    password: "{{ item.password }}"
+  loop: "{{ pg_users }}"
+
