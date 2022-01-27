@@ -5,6 +5,12 @@
   args:
     creates: /var/lib/pgsql/12/data/PG_VERSION
 
+- name: Start & enable postgres
+  service:
+    name: postgresql-12
+    state: started
+    enabled: true
+
 - name: Configure listen address
   lineinfile:
     dest: /var/lib/pgsql/12/data/postgresql.conf

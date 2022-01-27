@@ -17,9 +17,3 @@
     - postgresql12
     - postgresql12-server
     - python3-psycopg2
-
-- name: Start & enable postgres
-  service:
-    name: postgresql-12
-    state: started
-    enabled: true
